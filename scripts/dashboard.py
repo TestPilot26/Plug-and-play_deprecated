@@ -4,7 +4,7 @@
 Usage:
     python3 scripts/dashboard.py
 
-Writes dashboard/index.html. No dependencies beyond the Python 3 standard
+Writes docs/index.html. No dependencies beyond the Python 3 standard
 library -- open the output in any browser.
 """
 
@@ -16,7 +16,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = REPO_ROOT / "data" / "engagements.csv"
-OUT_PATH = REPO_ROOT / "dashboard" / "index.html"
+OUT_PATH = REPO_ROOT / "docs" / "index.html"
 
 OUTCOME_LABELS = {
     "shipped-clean": ("Shipped clean", "#2e7d32"),

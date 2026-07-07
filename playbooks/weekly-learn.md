@@ -1,6 +1,6 @@
 # Playbook: Weekly Learn (scheduled session)
 
-**When to run:** automatically, weekly. Changes only `data/` and `dashboard/`,
+**When to run:** automatically, weekly. Changes only `data/` and `docs/`,
 delivered as a single pull request — never direct commits.
 
 ## Procedure
