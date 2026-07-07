@@ -1,0 +1,2 @@
+id,date_started,date_finished,client,problem_statement,tags,playbooks_used,knowledge_used,components_reused,adhoc_functionality,adhoc_procedures,sessions,acus,human_hours,corrections,outcome,lessons,estimate_hours,sensitivity
+example-2026-01-thisdeck,2026-01-15,2026-02-01,internal,"Example row - replace me: pitch deck management app with sharing",client-portal;content-management,,,,"deck upload; share links","vercel deploy setup",,25,12,4,shipped-rework,"Example row: sharing permissions needed a second pass - specify access rules up front",10,normal

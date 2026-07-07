@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engagement OS dashboard</title>
+<style>
+ body{font-family:system-ui,sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem;color:#222}
+ h1{font-size:1.5rem} h2{font-size:1.1rem;margin-top:0;border-bottom:1px solid #eee;padding-bottom:.4rem}
+ section{background:#fafafa;border:1px solid #e5e5e5;border-radius:8px;padding:1rem 1.2rem;margin:1rem 0}
+ table{border-collapse:collapse;width:100%} td,th{text-align:left;padding:.35rem .6rem;border-bottom:1px solid #eee;font-size:.9rem}
+ .row{display:flex;align-items:center;gap:.6rem;margin:.3rem 0} .row label{width:10rem;font-size:.85rem}
+ .bar{flex:1;background:#eee;border-radius:4px;position:relative;height:1.3rem}
+ .fill{height:100%;border-radius:4px}
+ .bar span{position:absolute;left:.5rem;top:0;font-size:.75rem;line-height:1.3rem}
+ .big{font-size:2.2rem;font-weight:700;margin:.2rem 0}
+ .note{color:#777;font-size:.8rem}
+</style></head><body>
+<h1>Engagement OS — living dashboard</h1>
+<p class="note">Generated 2026-07-07 14:09 UTC from data/engagements.csv. Regenerate with
+<code>python3 scripts/dashboard.py</code>.</p>
+<section><h2>Engagement outcomes</h2><div class="row"><label>Shipped w/ rework</label><div class="bar"><div class="fill" style="width:100%;background:#f9a825"></div><span>1 (100%)</span></div></div><p class='note'>1 engagement(s) total (confidential rows excluded).</p></section><section><h2>Reuse rate</h2><p class='big'>0%</p><p class='note'>Share of engagements using at least one playbook or reused component. Health indicator, not a target (see README: Goodhart risk).</p></section><section><h2>Playbook leaderboard</h2><p class='note'>No playbook usage recorded yet.</p></section><section><h2>Effort by pattern type (tags)</h2><table><tr><th>Tag</th><th>Engagements</th><th>Avg hours</th><th>Avg ACUs</th></tr><tr><td>client-portal</td><td>1</td><td>12.0</td><td>25.0</td></tr><tr><td>content-management</td><td>1</td><td>12.0</td><td>25.0</td></tr></table></section><section><h2>Playbook candidates</h2><p class='note'>No repeated ad-hoc work detected yet (needs 2+ occurrences).</p></section><section><h2>Quoting accuracy</h2><table><tr><th>Engagement</th><th>Estimated hrs</th><th>Actual hrs</th><th>Variance</th></tr><tr><td>example-2026-01-thisdeck</td><td>10</td><td>12</td><td>+2 (+20%)</td></tr></table></section>
+</body></html>
