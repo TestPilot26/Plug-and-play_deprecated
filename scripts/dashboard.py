@@ -50,6 +50,11 @@ def bar(count, total, color):
             f'<span>{count} ({pct}%)</span></div>')
 
 
+def h2(title, tip):
+    return (f'<h2>{title} <span class="help" tabindex="0">?'
+            f'<span class="tip">{html.escape(tip)}</span></span></h2>')
+
+
 def table(headers, rows_html):
     head = "".join(f"<th>{h}</th>" for h in headers)
     return f'<table><tr>{head}</tr>{"".join(rows_html)}</table>'
@@ -93,10 +98,10 @@ def build(rows):
 
     sections = []
     sections.append(
-        "<h2>Engagement outcomes</h2>"
-        "<p class='sub'>How each project ended — the label a human picks at the "
-        "end-of-project retro (the <code>outcome</code> column of "
-        "data/engagements.csv), using the rubric in data/schema.md.</p>"
+        h2("Engagement outcomes",
+           "How each project ended — the label a human picks at the "
+           "end-of-project retro (the 'outcome' column of data/engagements.csv), "
+           "using the rubric in data/schema.md.")
         + "".join(
             f'<div class="row"><label>{html.escape(OUTCOME_LABELS.get(k, (k, "#607d8b"))[0])}</label>'
             + bar(v, total, OUTCOME_LABELS.get(k, (k, "#607d8b"))[1]) + "</div>"
@@ -105,33 +110,33 @@ def build(rows):
 
     reuse_pct = 0 if total == 0 else round(100 * len(reuse_rows) / total)
     sections.append(
-        "<h2>Reuse rate</h2>"
-        "<p class='sub'>Share of projects that used at least one existing playbook "
-        "or reused component — computed from the <code>playbooks_used</code> and "
-        "<code>components_reused</code> columns, recorded automatically at retro.</p>"
-        f"<p class='big'>{reuse_pct}%</p>"
+        h2("Reuse rate",
+           "Share of projects that used at least one existing playbook or reused "
+           "component — computed from the 'playbooks_used' and 'components_reused' "
+           "columns, recorded automatically at retro.")
+        + f"<p class='big'>{reuse_pct}%</p>"
         "<p class='note'>Health indicator, not a target (see README: Goodhart risk).</p>")
 
-    pb_sub = ("<p class='sub'>Which playbooks get used and how well those projects "
-              "go — from the <code>playbooks_used</code> column, cross-referenced "
-              "with each project's outcome and effort.</p>")
+    pb_h2 = h2("Playbook leaderboard",
+               "Which playbooks get used and how well those projects go — from "
+               "the 'playbooks_used' column, cross-referenced with each project's "
+               "outcome and effort.")
     if pb_stats:
-        sections.append("<h2>Playbook leaderboard</h2>" + pb_sub + table(
+        sections.append(pb_h2 + table(
             ["Playbook", "Uses", "Shipped clean", "Avg hours", "Avg ACUs"],
             [f"<tr><td>{html.escape(pb)}</td><td>{s['uses']}</td>"
              f"<td>{s['clean']}/{s['uses']}</td>"
              f"<td>{s['hours']/s['uses']:.1f}</td><td>{s['acus']/s['uses']:.1f}</td></tr>"
              for pb, s in sorted(pb_stats.items(), key=lambda kv: -kv[1]["uses"])]))
     else:
-        sections.append("<h2>Playbook leaderboard</h2>" + pb_sub
-                        + "<p class='note'>No playbook usage recorded yet.</p>")
+        sections.append(pb_h2 + "<p class='note'>No playbook usage recorded yet.</p>")
 
     if tag_stats:
         sections.append(
-            "<h2>Effort by pattern type (tags)</h2>"
-            "<p class='sub'>Average cost of each kind of project — tags are category "
-            "labels assigned at retro (controlled list in data/schema.md); hours and "
-            "ACUs come from the effort columns of the same row.</p>" + table(
+            h2("Effort by pattern type (tags)",
+               "Average cost of each kind of project — tags are category labels "
+               "assigned at retro (controlled list in data/schema.md); hours and "
+               "ACUs come from the effort columns of the same row.") + table(
             ["Tag", "Engagements", "Avg hours", "Avg ACUs"],
             [f"<tr><td>{html.escape(t)}</td><td>{s['n']}</td>"
              f"<td>{s['hours']/s['n']:.1f}</td><td>{s['acus']/s['n']:.1f}</td></tr>"
@@ -139,29 +144,28 @@ def build(rows):
 
     if hotspots:
         sections.append(
-            "<h2>Playbook candidates (ad-hoc work seen 2+ times)</h2>"
-            "<p class='sub'>Auto-suggested playbooks — from-scratch work (the "
-            "<code>adhoc_functionality</code>/<code>adhoc_procedures</code> columns) "
-            "that has appeared in 2+ projects.</p>" + table(
+            h2("Playbook candidates (ad-hoc work seen 2+ times)",
+               "Auto-suggested playbooks — from-scratch work (the "
+               "'adhoc_functionality'/'adhoc_procedures' columns) that has "
+               "appeared in 2+ projects.") + table(
                 ["Ad-hoc functionality / procedure", "Times seen"],
                 [f"<tr><td>{html.escape(k)}</td><td>{v}</td></tr>" for k, v in hotspots])
             + "<p class='note'>Review these in data/playbook-candidates.md — "
               "promote to a playbook/component or dismiss.</p>")
     else:
         sections.append(
-            "<h2>Playbook candidates</h2>"
-            "<p class='sub'>Auto-suggested playbooks — from-scratch work (the "
-            "<code>adhoc_functionality</code>/<code>adhoc_procedures</code> columns) "
-            "that has appeared in 2+ projects.</p>"
-            "<p class='note'>No repeated ad-hoc work detected yet (needs 2+ "
+            h2("Playbook candidates",
+               "Auto-suggested playbooks — from-scratch work (the "
+               "'adhoc_functionality'/'adhoc_procedures' columns) that has "
+               "appeared in 2+ projects.")
+            + "<p class='note'>No repeated ad-hoc work detected yet (needs 2+ "
             "occurrences).</p>")
 
     if quoted:
         sections.append(
-            "<h2>Quoting accuracy</h2>"
-            "<p class='sub'>Estimated vs. real effort — <code>estimate_hours</code> "
-            "is what was quoted up front; <code>human_hours</code> is what the "
-            "engineer confirms at retro.</p>" + table(
+            h2("Quoting accuracy",
+               "Estimated vs. real effort — 'estimate_hours' is what was quoted "
+               "up front; 'human_hours' is what the engineer confirms at retro.") + table(
             ["Engagement", "Estimated hrs", "Actual hrs", "Variance"],
             [f"<tr><td>{html.escape(i)}</td><td>{e:.0f}</td><td>{a:.0f}</td>"
              f"<td>{'+' if a >= e else ''}{(a - e):.0f} ({(a - e) / e * 100:+.0f}%)</td></tr>"
@@ -184,7 +188,11 @@ def build(rows):
  .bar span{{position:absolute;left:.5rem;top:0;font-size:.75rem;line-height:1.3rem}}
  .big{{font-size:2.2rem;font-weight:700;margin:.2rem 0}}
  .note{{color:#777;font-size:.8rem}}
- .sub{{color:#555;font-size:.85rem;margin:.2rem 0 .8rem}}
+ .help{{display:inline-block;position:relative;width:1.05rem;height:1.05rem;line-height:1.05rem;text-align:center;
+   border-radius:50%;background:#cfd8dc;color:#37474f;font-size:.7rem;font-weight:700;cursor:help;vertical-align:middle}}
+ .help .tip{{display:none;position:absolute;left:1.4rem;top:-.3rem;z-index:10;width:20rem;background:#263238;color:#eceff1;
+   font-size:.78rem;font-weight:400;line-height:1.4;text-align:left;padding:.55rem .7rem;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.25)}}
+ .help:hover .tip,.help:focus .tip{{display:block}}
 </style></head><body>
 <h1>Engagement OS — living dashboard</h1>
 <p class="note"><a href="about.html">About: the thinking behind this system</a></p>
