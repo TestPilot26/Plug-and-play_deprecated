@@ -34,6 +34,11 @@ def api_get(path: str, api_key: str) -> dict:
         return json.load(resp)
 
 
+def normalize_sid(token: str) -> str:
+    token = token.rstrip("/").split("/")[-1]
+    return token.removeprefix("devin-")
+
+
 def known_session_ids() -> set:
     ids = set()
     if not CSV_PATH.exists():
@@ -41,8 +46,30 @@ def known_session_ids() -> set:
     with open(CSV_PATH, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             for token in (row.get("sessions") or "").replace(";", " ").split():
-                ids.add(token.rstrip("/").split("/")[-1])
+                ids.add(normalize_sid(token))
     return ids
+
+
+def fetch_sessions(api_key: str, cutoff: datetime) -> list:
+    """Page through sessions until exhausted or past the cutoff date."""
+    sessions, offset, page_size = [], 0, 100
+    while offset < 2000:
+        data = api_get(f"/sessions?limit={page_size}&offset={offset}", api_key)
+        page = data.get("sessions", data if isinstance(data, list) else [])
+        if not page:
+            break
+        sessions.extend(page)
+        oldest = page[-1].get("created_at", "")
+        try:
+            oldest_dt = datetime.fromisoformat(oldest.replace("Z", "+00:00"))
+            if oldest_dt < cutoff:
+                break
+        except ValueError:
+            pass
+        if len(page) < page_size:
+            break
+        offset += page_size
+    return sessions
 
 
 def main() -> int:
@@ -57,15 +84,14 @@ def main() -> int:
               "Settings -> API and store it as a secret.", file=sys.stderr)
         return 1
 
+    cutoff = datetime.now(timezone.utc) - timedelta(days=args.days)
     try:
-        data = api_get("/sessions?limit=100", api_key)
+        sessions = fetch_sessions(api_key, cutoff)
     except Exception as exc:  # noqa: BLE001 - report any API failure plainly
         print(f"ERROR: Devin API request failed: {exc}", file=sys.stderr)
         return 1
 
-    sessions = data.get("sessions", data if isinstance(data, list) else [])
     known = known_session_ids()
-    cutoff = datetime.now(timezone.utc) - timedelta(days=args.days)
 
     drafts = []
     for s in sessions:
@@ -77,7 +103,7 @@ def main() -> int:
             created_dt = None
         if created_dt and created_dt < cutoff:
             continue
-        if sid.split("-")[-1] in known or sid in known:
+        if normalize_sid(sid) in known:
             continue
         drafts.append({
             "session_id": sid,
