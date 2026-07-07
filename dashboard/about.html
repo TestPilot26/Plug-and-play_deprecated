@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Engagement OS</title>
+<style>
+ body{font-family:system-ui,sans-serif;max-width:760px;margin:2rem auto;padding:0 1rem;color:#222;line-height:1.55}
+ h1{font-size:1.5rem} h2{font-size:1.15rem;margin-top:2rem;border-bottom:1px solid #eee;padding-bottom:.3rem}
+ .note{color:#777;font-size:.85rem}
+ blockquote{border-left:3px solid #ddd;margin:1rem 0;padding:.2rem 1rem;color:#555}
+ table{border-collapse:collapse;width:100%;font-size:.9rem}
+ td,th{text-align:left;padding:.4rem .6rem;border-bottom:1px solid #eee;vertical-align:top}
+ a{color:#1565c0}
+ code{background:#f4f4f4;padding:.1rem .3rem;border-radius:3px;font-size:.85em}
+</style></head><body>
+<p class="note"><a href="index.html">&larr; back to dashboard</a></p>
+<h1>The thinking behind Engagement OS</h1>
+<p class="note">Why this system is shaped the way it is — because the reasoning
+matters as much as the functionality.</p>
+
+<h2>The problem it solves</h2>
+<p>Every client engagement built with Devin generates hard-won know-how: which
+approaches worked, what clients always ask for late, how long things really
+take. Normally that knowledge lives in one engineer's head and evaporates.
+The next engagement starts from a blank prompt and relearns the same lessons —
+at full price.</p>
+<p>Engagement OS turns each engagement into structured data, mines that data
+for repeatable patterns, and hands the next engagement a ready-made starter
+kit. Every project makes the following one cheaper. That compounding is the
+whole point.</p>
+
+<h2>The loop</h2>
+<blockquote><strong>Capture → Learn → Suggest</strong><br>
+Each engagement logs what was used and how it went (Capture). A weekly
+automated session finds repeated patterns and drafts suggestions (Learn). New
+problem statements get matched against that history to produce a ranked,
+evidence-backed starter kit (Suggest).</blockquote>
+<p>Crucially, capture records not only which playbooks were <em>used</em>, but
+what was built <em>from scratch</em> — the ad-hoc functionality and procedures
+with no playbook behind them. When the same ad-hoc work shows up in two or
+three engagements, the system flags it as a playbook candidate, the same way
+Devin suggests knowledge notes. The library grows from observed behavior, not
+from someone remembering to write documentation.</p>
+
+<h2>The design principles (and why)</h2>
+<table>
+<tr><th>Principle</th><th>Reasoning</th></tr>
+<tr><td><strong>The system drafts; humans decide.</strong></td>
+<td>Automated pattern-mining is confidently wrong sometimes. A wrong playbook
+suggestion silently applied could send a whole build down the wrong path. So
+every promotion — candidate to playbook, pattern to library — passes a human
+approval gate, and every suggestion shows the past engagements it's based on,
+so a bad match is spottable.</td></tr>
+<tr><td><strong>Boring technology on purpose.</strong></td>
+<td>The whole system is a CSV file, markdown documents, and two small scripts
+with zero dependencies. A learning system that itself needs maintenance is a
+tax that kills learning systems. Nothing here can meaningfully break, and
+everything is inspectable by a non-programmer.</td></tr>
+<tr><td><strong>Minimal behavior change.</strong></td>
+<td>Learning loops die when retros feel like homework. Humans do exactly three
+things: run triage at the start (~2 min), confirm a pre-filled retro at the end
+(~5 min), and review a weekly summary (~5 min). Everything else is automated.</td></tr>
+<tr><td><strong>Earn trust with data volume.</strong></td>
+<td>With fewer than ~10–15 engagements, "patterns" are mostly noise. So the
+suggest layer stays advisory, states its sample sizes, and refuses to invent a
+pattern from a single example. Early on, it's organized memory; the recommender
+role is earned later.</td></tr>
+<tr><td><strong>Metrics are health indicators, not targets.</strong></td>
+<td>If "reuse rate" became a target, engineers would force-fit templates onto
+novel problems (Goodhart's law: when a measure becomes a target, it stops
+measuring what you wanted). The dashboard informs; it doesn't grade people.</td></tr>
+<tr><td><strong>Honest accounting, including the risks.</strong></td>
+<td>Impact is measured only on engagements where a suggestion was actually
+used, compared against a pre-playbook baseline — and the expected cost of
+wrong suggestions, stale playbooks, and maintenance is subtracted, not
+ignored. The retirement rule is written down up front: if the system doesn't
+pay for itself within a quarter of normal volume, simplify or stop.</td></tr>
+</table>
+
+<h2>What "good" looks like</h2>
+<p>Six months in, success looks like: new engagements start with a triage
+session that cites real precedents; two or three promoted playbooks cover the
+most common engagement shapes; quotes are made from measured effort ranges
+rather than gut feel; and this dashboard's reuse trend is rising without
+anyone being told to raise it.</p>
+
+<h2>Where everything lives</h2>
+<p>The capture table, pattern library, candidate queue, playbook drafts, and
+scripts are all in the
+<a href="https://github.com/TestPilot26/engagement-os">engagement-os repository</a>.
+The full analysis — risks, expected ROI, dollar-impact formula, target users,
+implementation practices — is in the
+<a href="https://github.com/TestPilot26/engagement-os#readme">README</a>.</p>
+</body></html>

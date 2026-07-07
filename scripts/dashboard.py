@@ -162,6 +162,7 @@ def build(rows):
  .note{{color:#777;font-size:.8rem}}
 </style></head><body>
 <h1>Engagement OS — living dashboard</h1>
+<p class="note"><a href="about.html">About: the thinking behind this system</a></p>
 <p class="note">Generated {generated} from data/engagements.csv. Regenerate with
 <code>python3 scripts/dashboard.py</code>.</p>
 {body}
