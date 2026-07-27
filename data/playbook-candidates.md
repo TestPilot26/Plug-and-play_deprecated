@@ -15,3 +15,12 @@ For each candidate, a reviewer picks one:
 | Candidate | Type | Seen in (engagement ids) | Times seen | Status | Decision notes |
 |---|---|---|---|---|---|
 | _empty — populated by the weekly learn session_ | | | | | |
+
+## Sweep log
+
+**2026-07-27** — no candidate met the 2+ threshold. Every ad-hoc item across the
+capture table so far appears exactly once (the `example-2026-01-thisdeck`
+placeholder row is excluded from mining). Nearest near-miss, for a human to
+judge: `vercel deploy setup` (placeholder row) and `GitHub Pages deploy`
+(`2026-07-engagement-os`) are both "publish a static/front-end artefact"
+procedures — one real occurrence, so not suggested.
