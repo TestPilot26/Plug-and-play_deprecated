@@ -18,6 +18,10 @@ For each candidate, a reviewer picks one:
 
 ## Sweep log
 
+**2026-08-10** — no change. The sweep found no new engagement sessions, so the
+ad-hoc columns are identical to last week and no item reached the 2+ threshold.
+Queue remains empty; the deploy-procedure near-miss noted below is unchanged.
+
 **2026-08-03** — no change. No new engagement rows this week, so the ad-hoc
 columns are unchanged and nothing reached the 2+ threshold. The `vercel deploy
 setup` / `GitHub Pages deploy` near-miss below still stands at one real

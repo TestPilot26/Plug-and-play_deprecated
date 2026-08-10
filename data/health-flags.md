@@ -3,6 +3,33 @@
 Staleness and process-gap flags raised by the weekly learn session. Drafted for
 human review — nothing here is acted on automatically.
 
+## 2026-08-10
+
+**Staleness (`Last validated` > 90 days, or uses correlating with `shipped-rework`)**
+- Nothing over the 90-day line yet: the single pattern entry and all three playbooks date from
+  2026-07-07 (34 days old).
+- `playbooks/retro.md` and `playbooks/triage.md` are still unproven — `playbooks_used` is blank
+  on every capture row five weeks after they were written. If they are not deliberately used on
+  the next engagement they will age into staleness without ever having been validated.
+
+**Process gaps (all carried over; none resolved this week)**
+- Outcome labels still missing on both real rows (`2026-07-opsdeck`, `2026-07-engagement-os`),
+  now ~5 weeks old. Confidence scoring in the pattern library stays blocked.
+- Effort (`acus`, `human_hours`, `estimate_hours`) and `lessons` still blank on both rows —
+  no quoting-accuracy or watch-out data can be computed.
+- Neither engagement has a retro row of its own; both were sweep-drafted. Four weekly sessions
+  in a row have flagged this, which meets the README's "retros skipped 3 engagements running"
+  abandonment trigger.
+- `example-2026-01-thisdeck` placeholder row still present and still counted by the dashboard.
+- **Weekly output is still not landing:** PRs #3, #4 and #5 are all open and unreviewed. This
+  PR carries all of their content forward and supersedes them; #3, #4 and #5 can be closed.
+  Four weeks of drafts now sit in one review queue — the single highest-value human action is
+  to review this PR and label the two outcome cells.
+
+**Sweep coverage this week**
+- 14- and 120-day sweeps found no new engagement sessions since 2026-08-03: the only sessions
+  are the weekly-learn runs themselves (system chores, not engagements). No new rows drafted.
+
 ## 2026-08-03
 
 **Staleness (`Last validated` > 90 days, or uses correlating with `shipped-rework`)**
