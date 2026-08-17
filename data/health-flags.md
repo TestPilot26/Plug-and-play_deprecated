@@ -3,6 +3,40 @@
 Staleness and process-gap flags raised by the weekly learn session. Drafted for
 human review — nothing here is acted on automatically.
 
+## 2026-08-17
+
+**Staleness (`Last validated` > 90 days, or uses correlating with `shipped-rework`)**
+- Still nothing past the 90-day line: the single pattern entry and all three playbooks date from
+  2026-07-07 (41 days old). Half-way to the rot threshold with nothing validated in between.
+- `playbooks/retro.md` and `playbooks/triage.md` remain unproven — `playbooks_used` is blank on
+  every capture row six weeks after they were written. On current trend they will cross 90 days
+  (2026-10-05) never having been used once, which is rot by default rather than by decay.
+
+**Process gaps (all carried over; none resolved this week)**
+- Outcome labels still missing on both real rows (`2026-07-opsdeck`, `2026-07-engagement-os`),
+  now ~6 weeks old. Confidence scoring in the pattern library stays blocked.
+- Effort (`acus`, `human_hours`, `estimate_hours`) and `lessons` still blank on both rows — no
+  quoting-accuracy or watch-out data can be computed.
+- Neither engagement has a retro row of its own; both were sweep-drafted. Five weekly sessions
+  in a row have flagged this, well past the README's "retros skipped 3 engagements running"
+  abandonment trigger.
+- `example-2026-01-thisdeck` placeholder row still present and still counted by the dashboard.
+- **Weekly output is still not landing:** PRs #3, #4, #5 and #6 are all open and unreviewed.
+  This PR carries their content forward and supersedes all four; #3–#6 can be closed. Five
+  weeks of drafts now sit in one review queue. Two human actions unblock everything else:
+  label the two `outcome` cells, then merge this PR.
+- No engagement work at all has been captured since 2026-07-07 (six weeks). Either engagement
+  activity has stopped, or it is happening outside Devin sessions and the sweep cannot see it —
+  worth confirming which, since the second case means the capture table is silently incomplete.
+
+**Sweep coverage this week**
+- 14- and 60-day sweeps found no new engagement sessions since 2026-08-10: the only sessions in
+  the window are the weekly-learn runs themselves (system chores, not engagements). No new rows
+  drafted.
+- The five 2026-07-05 sessions (`tinyhttp` unit tests, Hono URL shortener, taxonomy blog page,
+  architecture diagram, Express→Fastify migration guide) remain uncaptured and still read as
+  demo/eval runs. Flagged for the third week; a human should confirm that read or ask for rows.
+
 ## 2026-08-10
 
 **Staleness (`Last validated` > 90 days, or uses correlating with `shipped-rework`)**

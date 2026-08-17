@@ -18,6 +18,12 @@ For each candidate, a reviewer picks one:
 
 ## Sweep log
 
+**2026-08-17** — no change. No new engagement rows again this week, so the
+ad-hoc columns are unchanged and nothing reached the 2+ threshold. Queue stays
+empty; the deploy-procedure near-miss noted below is unchanged. Six weeks with
+no new capture rows means the queue cannot fill — the blocker is capture, not
+mining.
+
 **2026-08-10** — no change. The sweep found no new engagement sessions, so the
 ad-hoc columns are identical to last week and no item reached the 2+ threshold.
 Queue remains empty; the deploy-procedure near-miss noted below is unchanged.
