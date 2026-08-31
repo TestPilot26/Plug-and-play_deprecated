@@ -18,6 +18,11 @@ For each candidate, a reviewer picks one:
 
 ## Sweep log
 
+**2026-08-31** — no change. No new engagement rows again this week, so the
+ad-hoc columns are unchanged and nothing reached the 2+ threshold. Queue stays
+empty; the deploy-procedure near-miss noted below is unchanged. Eight weeks with
+no new capture rows: the blocker remains capture, not mining.
+
 **2026-08-24** — no change. No new engagement rows again this week, so the
 ad-hoc columns are unchanged and nothing reached the 2+ threshold. Queue stays
 empty; the deploy-procedure near-miss noted below is unchanged. Seven weeks with

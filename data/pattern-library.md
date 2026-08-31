@@ -19,7 +19,7 @@ Entry template:
 - Last validated: <date of most recent successful use>
 ```
 
-_Last swept: 2026-08-24 (no new engagements this week; entry below unchanged since 2026-07-27)._
+_Last swept: 2026-08-31 (no new engagements this week; entry below unchanged since 2026-07-27)._
 
 ## Pattern: Internal ops/admin tooling prototype
 - Signals: tags `internal-tooling` + (`admin-dashboard` | `automation` | `reporting`); problem statements about an internal console/tool for a team's own operations rather than an end-client-facing product
