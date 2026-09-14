@@ -18,6 +18,18 @@ For each candidate, a reviewer picks one:
 
 ## Sweep log
 
+**2026-09-14** — no candidate met the 2+ threshold, but the table finally grew:
+one new row (`2026-09-exec-inbox-triage-sheet`). Its ad-hoc items are all
+first occurrences. Near-misses for a human to judge (each is one real
+occurrence plus a loose match, so not suggested):
+- *Publish/deploy a built artefact by hand* — `paste-into-Apps-Script deploy`
+  (new row) joins `GitHub Pages deploy` (`2026-07-engagement-os`) and `vercel
+  deploy setup` (placeholder row). Three different targets, same shape: a
+  "ship the thing to where it runs" procedure with no playbook behind it. If a
+  human reads these as one procedure, it qualifies (2 real occurrences).
+- *Third-party permission / API-key setup* — `Drive/Gmail permission scope fix`
+  (new row) vs. `create client GitHub repo` (`2026-07-opsdeck`). Weak match.
+
 **2026-09-07** — no change. No new engagement rows again this week, so the
 ad-hoc columns are unchanged and nothing reached the 2+ threshold. Queue stays
 empty; the deploy-procedure near-miss noted below is unchanged. Nine weeks with

@@ -3,6 +3,35 @@
 Staleness and process-gap flags raised by the weekly learn session. Drafted for
 human review — nothing here is acted on automatically.
 
+## 2026-09-14
+
+**Staleness (`Last validated` > 90 days, or uses correlating with `shipped-rework`)**
+- Nothing past the 90-day line yet. All three playbooks date from 2026-07-07 (69 days old) and
+  cross the rot threshold on 2026-10-05 — three weeks away. The pattern entry's `Last validated`
+  moved to 2026-09-11 with this week's new row, so it is no longer on the clock.
+- `playbooks/retro.md` and `playbooks/triage.md` are still unproven: `playbooks_used` is blank on
+  every row, including this week's new one (the engagement started ad hoc, without Triage).
+
+**Process gaps**
+- **New:** `2026-09-exec-inbox-triage-sheet` finished with no retro row — drafted by the sweep.
+  That makes three engagements in a row without a retro, and the row has gaps only a human can
+  fill: `client` is `tbd-external`, `outcome`/`estimate_hours`/`acus` blank, `sensitivity`
+  defaulted to `normal` (client is a named executive's inbox — confirm this is not `confidential`).
+- Outcome labels still missing on `2026-07-opsdeck` and `2026-07-engagement-os` (~10 weeks old),
+  plus the new row. Confidence scoring stays 0/3 by default, not by evidence.
+- `example-2026-01-thisdeck` placeholder row still present and still counted by the dashboard.
+- **Weekly output is still not landing:** PRs #3–#10 are all open. This PR carries their content
+  forward and supersedes all eight; #3–#10 can be closed. Merging this one plus labelling three
+  `outcome` cells unblocks everything else.
+- The weekly-learn sessions keep surfacing as "uncaptured" in every sweep (ten now). Still a
+  candidate `sweep.py` filter (script change — out of scope here).
+
+**Sweep coverage this week**
+- 14-day sweep found 4 uncaptured sessions: three weekly-learn runs (system chores, no rows) and
+  one real engagement (`devin-0f6d1aff…`, 2026-09-11, Google Apps Script simplification) → one
+  row drafted. First new engagement captured since 2026-07-07.
+- The five 2026-07-05 demo/eval-looking sessions remain uncaptured and unconfirmed (seventh week).
+
 ## 2026-09-07
 
 **Staleness (`Last validated` > 90 days, or uses correlating with `shipped-rework`)**
