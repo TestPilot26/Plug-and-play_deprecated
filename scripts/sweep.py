@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+###!/usr/bin/env python3
 """Auto-capture sweep.
 
 Lists recent Devin sessions via the Devin API and prints draft capture-row
@@ -11,21 +11,21 @@ Usage:
 No dependencies beyond the Python 3 standard library.
 """
 
-import argparse
-import csv
-import json
-import os
-import sys
-import urllib.request
-from datetime import datetime, timedelta, timezone
-from pathlib import Path
+#import argparse
+#import csv
+#import json
+#import os
+#import sys
+#import urllib.request
+#from datetime import datetime, timedelta, timezone
+#from pathlib import Path
 
-API_BASE = "https://api.devin.ai/v1"
-REPO_ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = REPO_ROOT / "data" / "engagements.csv"
+#API_BASE = "https://api.devin.ai/v1"
+#REPO_ROOT = Path(__file__).resolve().parent.parent
+#CSV_PATH = REPO_ROOT / "data" / "engagements.csv"
 
 
-def api_get(path: str, api_key: str) -> dict:
+#def api_get(path: str, api_key: str) -> dict:
     req = urllib.request.Request(
         f"{API_BASE}{path}",
         headers={"Authorization": f"Bearer {api_key}"},
@@ -34,12 +34,12 @@ def api_get(path: str, api_key: str) -> dict:
         return json.load(resp)
 
 
-def normalize_sid(token: str) -> str:
+#def normalize_sid(token: str) -> str:
     token = token.rstrip("/").split("/")[-1]
     return token.removeprefix("devin-")
 
 
-def known_session_ids() -> set:
+#def known_session_ids() -> set:
     ids = set()
     if not CSV_PATH.exists():
         return ids
@@ -50,10 +50,10 @@ def known_session_ids() -> set:
     return ids
 
 
-def fetch_sessions(api_key: str, cutoff: datetime) -> list:
+#def fetch_sessions(api_key: str, cutoff: datetime) -> list:
     """Page through sessions until exhausted or past the cutoff date."""
     sessions, offset, page_size = [], 0, 100
-    while offset < 2000:
+   # while offset < 2000:
         data = api_get(f"/sessions?limit={page_size}&offset={offset}", api_key)
         page = data.get("sessions", data if isinstance(data, list) else [])
         if not page:
@@ -69,17 +69,17 @@ def fetch_sessions(api_key: str, cutoff: datetime) -> list:
         if len(page) < page_size:
             break
         offset += page_size
-    return sessions
+    #return sessions
 
 
-def main() -> int:
+#def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--days", type=int, default=14,
                         help="look-back window in days (default 14)")
     args = parser.parse_args()
 
     api_key = os.environ.get("DEVIN_API_KEY")
-    if not api_key:
+    #if not api_key:
         print("ERROR: DEVIN_API_KEY is not set. Create an API key in Devin "
               "Settings -> API and store it as a secret.", file=sys.stderr)
         return 1
@@ -94,7 +94,7 @@ def main() -> int:
     known = known_session_ids()
 
     drafts = []
-    for s in sessions:
+    #for s in sessions:
         sid = s.get("session_id", "")
         created = s.get("created_at", "")
         try:
@@ -114,7 +114,7 @@ def main() -> int:
             "acus": s.get("acu_used") or "",
         })
 
-    if not drafts:
+    #if not drafts:
         print(f"No uncaptured sessions in the last {args.days} days.")
         return 0
 
@@ -127,5 +127,5 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
     sys.exit(main())
