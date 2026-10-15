@@ -19,4 +19,16 @@ Entry template:
 - Last validated: <date of most recent successful use>
 ```
 
-_No patterns yet — the library earns entries as the capture table grows._
+_Last swept: 2026-09-07 (no new engagements this week; entry below unchanged since 2026-07-27)._
+
+## Pattern: Internal ops/admin tooling prototype
+- Signals: tags `internal-tooling` + (`admin-dashboard` | `automation` | `reporting`); problem statements about an internal console/tool for a team's own operations rather than an end-client-facing product
+- Recommended starter kit:
+  - Playbooks: none proven yet (no engagement in this cluster used one)
+  - Components: none proven yet — the sweep/dashboard scripts in this repo are the only reusable artefacts so far
+  - Knowledge folders: none recorded
+- Confidence: 0/2 matching engagements shipped cleanly — **outcomes not yet labelled** (`2026-07-opsdeck`, `2026-07-engagement-os`)
+- Typical effort: unknown — `human_hours` and `acus` are blank on both rows
+- Watch-outs: none derivable yet (`lessons` blank on both rows); both engagements built role/permission or data-governance behaviour from scratch, which is the likeliest source of late corrections
+- Last validated: 2026-07-07
+- ⚠ low confidence — entry is a 2-row cluster with no outcome labels, no effort data and no lessons. Treat as a placeholder for shape recognition only; do not use it to justify a starter kit until the rows are labelled at retro.
